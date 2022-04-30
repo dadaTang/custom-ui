@@ -17,12 +17,14 @@ import java.security.AccessController.getContext
  */
 object LoadingUtil {
 
-    fun createLoadingDialog(context: Context, msg: String = "加载中..."): Dialog {
+    private var dialog: Dialog? = null
+
+    fun show(context: Context, msg: String = "加载中...") {
 
         val binding: DialogLoadingBinding =
             DialogLoadingBinding.inflate(LayoutInflater.from(context))
         binding.tvTips.text = msg // 设置加载信息
-         val loadingDialog = Dialog(context, R.style.LoadingDialogStyle) // 创建自定义样式dialog
+        val loadingDialog = Dialog(context, R.style.LoadingDialogStyle) // 创建自定义样式dialog
         loadingDialog.setCancelable(true) // 是否可以按“返回键”消失
         loadingDialog.setCanceledOnTouchOutside(false) // 点击加载框以外的区域
         loadingDialog.setContentView(
@@ -45,7 +47,7 @@ object LoadingUtil {
             loadingDialog.show()
         }
 
-        return loadingDialog
+        dialog = loadingDialog
     }
 
     /**
@@ -55,9 +57,12 @@ object LoadingUtil {
      *
      * @param mDialogUtils
      */
-    fun closeDialog(dialog: Dialog?) {
-        if (dialog != null && dialog.isShowing) {
-            dialog.dismiss()
+    fun dismiss() {
+        dialog?.let {
+            if (it.isShowing){
+               it.dismiss()
+            }
         }
+
     }
 }
