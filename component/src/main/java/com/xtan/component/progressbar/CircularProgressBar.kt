@@ -12,7 +12,7 @@ import com.xtan.component.R
 import kotlin.math.min
 
 /**
- * create by tlq , on 2022-03-18
+ * create by dadaloser , on 2022-03-18
  * description:圆形进度条
  */
 class CircularProgressBar (context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
