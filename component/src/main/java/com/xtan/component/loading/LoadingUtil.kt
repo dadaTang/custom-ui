@@ -20,6 +20,8 @@ object LoadingUtil {
     private var dialog: Dialog? = null
 
     fun show(context: Context, msg: String = "加载中...") {
+        //防止重复添加层级
+        dismiss()
 
         val binding: DialogLoadingBinding =
             DialogLoadingBinding.inflate(LayoutInflater.from(context))
@@ -44,6 +46,7 @@ object LoadingUtil {
             setGravity(Gravity.CENTER)
             attributes = lp
             setWindowAnimations(R.style.PopWindowAnimStyle)
+
             loadingDialog.show()
         }
 
@@ -59,8 +62,8 @@ object LoadingUtil {
      */
     fun dismiss() {
         dialog?.let {
-            if (it.isShowing){
-               it.dismiss()
+            if (it.isShowing) {
+                it.dismiss()
             }
         }
 
