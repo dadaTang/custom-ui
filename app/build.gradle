@@ -22,6 +22,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("../Onyx-key.jks")
+            storePassword "QnRdaSDjHSh87zCK"
+            keyAlias "whiteboard-onyx"
+            keyPassword "QnRdaSDjHSh87zCK"
+        }
+        release {
+            storeFile file("../Onyx-key.jks")
+            storePassword "QnRdaSDjHSh87zCK"
+            keyAlias "whiteboard-onyx"
+            keyPassword "QnRdaSDjHSh87zCK"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

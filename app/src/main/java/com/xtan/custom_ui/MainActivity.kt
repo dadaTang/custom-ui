@@ -1,7 +1,10 @@
 package com.xtan.custom_ui
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.xtan.component.dialog.extensions.UtilsExtension.Companion.dp2px
+import com.xtan.component.dialog.extensions.newCustomDialog
 import com.xtan.component.loading.LoadingUtil
 import com.xtan.custom_ui.databinding.ActivityMainBinding
 
@@ -16,6 +19,14 @@ class MainActivity : AppCompatActivity() {
         }
         mBinding.closeDialog.setOnClickListener {
             LoadingUtil.dismiss()
+        }
+
+        mBinding.dialog2.setOnClickListener {
+            newCustomDialog {
+                unLeak = true
+                width = dp2px(resources, 100f)
+                height = dp2px(resources, 100f)
+            }.showOnWindow(supportFragmentManager)
         }
     }
 }
